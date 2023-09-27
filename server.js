@@ -6,7 +6,7 @@ const server = http.createServer((req, res) => {
   const filePath = path.join(__dirname, req.url === '/' ? 'index.html' : req.url);
   const contentType = getContentType(filePath);
 
-  fs.readFile(filePath, 'utf8', (err, data) => {
+  fs.readFile(filePath, (err, data) => {
     if (err) {
       console.error('Error reading file:', err);
       res.writeHead(500, { 'Content-Type': 'text/plain' });
@@ -35,6 +35,9 @@ function getContentType(filePath) {
       return 'text/javascript';
     case '.json':
       return 'application/json';
+    case '.jpg':
+    case '.jpeg': // Handle both .jpg and .jpeg extensions
+      return 'image/jpeg';
     default:
       return 'text/plain';
   }
