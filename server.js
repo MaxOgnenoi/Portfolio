@@ -36,7 +36,7 @@ function getContentType(filePath) {
     case '.json':
       return 'application/json';
     case '.jpg':
-    case '.jpeg': // Handle both .jpg and .jpeg extensions
+    case '.jpeg': 
       return 'image/jpeg';
     default:
       return 'text/plain';
